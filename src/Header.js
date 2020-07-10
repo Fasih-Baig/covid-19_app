@@ -8,7 +8,7 @@ import { Navbar, FormControl, Dropdown } from "react-bootstrap";
 // Dropdown needs access to the DOM node in order to position the Menu
 const CustomToggle = React.forwardRef(({ children, onClick }, ref) => (
     <a
-        href="#"
+        href="#home"
         ref={ref}
         onClick={(e) => {
             e.preventDefault();
@@ -81,7 +81,7 @@ function Header() {
             }  
         }
         getRegularData();
-    }, [Index]);
+    }, [SelectCountry, Index]);
     if (Index < 186) {
         SelectCountry = CountriesCases[Index].Slug;
     } else {
