@@ -4,10 +4,16 @@ import { Card, Row, Col } from "react-bootstrap";
 function Cards(props) {
     let date = Date();
     let CovidData;
+    let DeathsRatio;
+    let RecoveredRatio;
     if (props.indexer < 186) {
         CovidData = props.CountriesCases[props.indexer];
+        DeathsRatio = (CovidData.TotalDeaths / CovidData.TotalConfirmed) * 100;
+        RecoveredRatio = (CovidData.TotalRecovered / CovidData.TotalConfirmed) * 100;
     } else {
         CovidData = props.GlobalCases;
+        DeathsRatio = (CovidData.TotalDeaths / CovidData.TotalConfirmed) * 100;
+        RecoveredRatio = (CovidData.TotalRecovered / CovidData.TotalConfirmed) * 100;
     }
     return (
         <div>
@@ -33,7 +39,7 @@ function Cards(props) {
                             <Card.Text>
                                 <span style={{ fontSize: "28px" }}>{CovidData.TotalRecovered}</span> <br />
                                 <code>{date}</code> <br />
-                                Number of recovered cases of covid 19.
+                                <span id="rRatio">{RecoveredRatio.toFixed(2)}%</span> of recovered cases from Covid 19.
                             </Card.Text>
                         </Card.Body>
                     </Card>
@@ -46,7 +52,7 @@ function Cards(props) {
                             <Card.Text>
                                 <span style={{ fontSize: "28px" }}>{CovidData.TotalDeaths}</span> <br />
                                 <code>{date}</code> <br />
-                                Number of deaths from covid 19.
+                                <span id="dRatio">{DeathsRatio.toFixed(2)}%</span> of deaths from Covid 19.
                             </Card.Text>
                         </Card.Body>
                     </Card>

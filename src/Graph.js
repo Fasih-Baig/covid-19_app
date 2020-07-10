@@ -1,5 +1,5 @@
 import React from "react";
-import {Line, Bar} from "react-chartjs-2";
+import {Line, Bar, Pie} from "react-chartjs-2";
 
 function Graph(props) {
     const globalData = {
@@ -71,17 +71,39 @@ function Graph(props) {
             }
         ]
     };
+    const pieGData = {
+        lebel: ['Infected','Recovered','Deaths'],
+        datasets: [{
+            data: [ props.GlobalData.TotalConfirmed,
+                    props.GlobalData.TotalRecovered,
+                    props.GlobalData.TotalDeaths
+                ],
+            backgroundColor: [
+                'rgba(255,99,132,0.2)',
+                'rgba(144,238,144,0.2)',
+                'rgba(255,0,0,0.2)'
+            ],
+            hoverBackgroundColor: [
+                'rgba(255,99,132)',
+                'rgba(144,238,144)',
+                'rgba(255,0,0)'
+            ]
+        }]
+    }
     return (
         <div style={{marginTop:"20px"}}>
-            {props.indexer < 186 ? <Line data={data} /> : <Bar
+            {props.indexer < 186 ? 
+            <Line 
+                data={data} 
+            /> : 
+            <Bar
                 data={globalData}
                 width={1000}
-                height={500}
+                height={300}
                 options={{
                     maintainAspectRatio: false
                 }}
             /> } 
-            
         </div>
     );
 }

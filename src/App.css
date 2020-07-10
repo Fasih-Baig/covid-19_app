@@ -9,3 +9,9 @@
 code {
     color: lightslategray;
 }
+#dRatio {
+    color: red;
+}
+#rRatio {
+    color: green;
+}
